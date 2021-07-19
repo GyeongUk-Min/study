@@ -1,0 +1,26 @@
+// 코테책 321p 7번(구현) 럭키 스트레이트
+
+
+import Foundation
+
+// 입력받은 데이터를 정수의 배열로 처리
+let N = Array(readLine()!).map{Int(String($0))!}
+// 입력받은 데이터 길이 구분
+let M = Int(N.count / 2)
+
+// 비교연산자 a(왼쪽) b(오른쪽)
+var a = 0
+var b = 0
+
+// 각 자릿수 값 더하기
+for i in 0...M {
+    a += N[i]
+    b += N[Int(M + i - 1)]
+}
+
+// a와 b의 합 비교
+if a == b {
+    print("LUCKY")
+} else {
+    print("READY")
+}
