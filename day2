@@ -1,0 +1,26 @@
+import Foundation
+
+// 입력값
+var a = readLine()!
+// 문자 구분
+var chars = [String]()
+// 숫자 구분
+var numbers = 0
+
+// 숫자일 경우 numbers에 더하고 아닐 경우 문자 리스트에 추가
+for i in a {
+    if i.isNumber {
+        numbers += i.wholeNumberValue!
+    } else {
+        chars.append(String(i))
+    }
+}
+
+// 문자 리스트 정렬
+chars.sort()
+// 문자 뒤에 숫자 추가
+chars.append(String(numbers))
+// 문자 리스트 합치기
+let result = chars.joined(separator: "")
+
+print(result)
