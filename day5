@@ -1,0 +1,32 @@
+// 코테(그리디) p311 모험가 길드
+
+import Foundation
+
+func solution(){
+    
+    let N = readLine()! // 모험가 수 입력
+    var X = readLine()!.split(separator: " ").map{Int($0)!} // 각 모험가의 공포도 입력
+    X.sort(by: {$0 > $1}) // 내림차순 정렬
+    
+    // N와 X 불일치 시 Error 메시지 return
+    if Int(N)! != X.count { return print("Input Error") }
+    
+    var group = [Int]()
+    var count = 0
+    
+    // X값을 지워나가며 그룹 편성
+    while !X.isEmpty {
+        let group_count = X[0]
+        // 공포도가 높은 순서대로 그룹 편성
+        for _ in 1...group_count {
+            group.append(X.removeFirst())
+        }
+        count += 1
+        // 그룹 초기화
+        group.removeAll()
+    }
+
+    print("\(count) 그룹")
+}
+
+print(solution())
