@@ -1,0 +1,26 @@
+// 코테(그리디) p312 곱하기 혹은 더하기
+
+import Foundation
+
+// 데이터 입력받기
+let n = readLine()!
+
+var N = [Int]()
+
+// 입력받은 데이터를 리스트 N에 저장
+for i in n {
+    N.append(Int(String(i))!)
+}
+
+var Data = N[0]
+
+// 첫번째 값과 계산할 값이 1이하일 경우 더하기 , 2 이상일 경우 곱하기 진행
+for i in 1..<N.count {
+    if N[i] <= 1 || Data <= 1 {
+        Data += N[i]
+    } else {
+        Data *= N[i]
+    }
+}
+
+print(Data)
