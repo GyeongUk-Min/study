@@ -1,0 +1,32 @@
+// 코테(그리디) p313 문자열 뒤집기
+
+import Foundation
+
+let x = readLine()!
+
+var count_0 = 0
+var count_1 = 0
+
+// 첫 번째 원소 확인
+if x == "0" {
+    count_0 += 1
+} else {
+    count_1 += 1
+}
+
+// 두 번째 원소부터 모든 값 비교
+for i in 0..<x.count-1 {
+    //i번째와 i+1번째 원소의 값이 다를 경우 뒤집기 횟수 증가
+    if x[x.index(x.startIndex, offsetBy: i)] != x[x.index(x.startIndex, offsetBy: i+1)] {
+        // 원소의 값이 0->1일 경우 0카운트 증가
+        if x[x.index(x.startIndex, offsetBy: i+1)] == "1" {
+            count_0 += 1
+        } else {
+            // 1->0일 경우 1카운트 증가
+            count_1 += 1
+        }
+    }
+}
+
+// 더 작은 수 출력
+print(min(count_0, count_1))
