@@ -1,0 +1,37 @@
+// 코테(그리디) p314 만들 수 없는 금액
+
+import Foundation
+
+func solution() -> Int {
+    let N = readLine()!
+    // 각 동전의 값 입력받고 배열로 저장 후 오름차순 정렬
+    var coin = readLine()!.split(separator: " ").map{Int($0)!}
+    coin.sort()
+    
+    // 입력받은 N과 동전의 수가 다를경우 0 return
+    if N.count != coin.count {
+        return 0
+    }
+
+    var result = 0
+    // 첫 번째 비교값 가져오기
+    let firstIndex = coin.removeFirst()
+    // 첫 번째 값이 2 이상일 경우 결과 1 출력
+    if firstIndex >= 2 {
+        return 1
+    } else {
+        result += firstIndex
+    }
+
+    for i in coin {
+        // 현재까지의 합보다 i가 더 클경우 result+1값 return
+        if result < i {
+            return result+1
+        } else {
+            result += i
+        }
+    }
+    return result+1
+}
+
+print(solution())
